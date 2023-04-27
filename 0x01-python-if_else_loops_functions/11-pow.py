@@ -7,12 +7,9 @@ def pow(a, b):
     if b == 0:
         return 1
     elif b < 0:
-        a = 1 / a
-        b = -b
-    res = 1
-    while b > 0:
-        if b % 2 == 1:
+        return 1 / pow(a, -b)
+    else:
+        res = 1
+        for i in range(b):
             res *= a
-        a *= a
-        b //= 2
-    return res
+        return res
