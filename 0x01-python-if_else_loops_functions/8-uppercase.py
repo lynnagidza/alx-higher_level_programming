@@ -9,9 +9,9 @@ Prototype: def uppercase(str):
 def uppercase(str):
     for c in str:
         if ord(c) >= 97 and ord(c) <= 122:
-            print(f"{chr(ord(c) - 32)}", end="")
+            print("{}" .format(chr(ord(c) - 32)), end="")
         else:
-            print(f"{c}", end="")
+            print("{}".format(c), end="")
     print()
 
 

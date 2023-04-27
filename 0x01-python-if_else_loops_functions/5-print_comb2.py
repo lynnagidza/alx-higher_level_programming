@@ -2,6 +2,6 @@
 """Write a program that prints numbers from 0 to 99"""
 for no in range(0, 100):
     if no == 99:
-        print(f"{no:02}")
+        print("{:02}".format(no))
     else:
-        print(f"{no:02}", end=", ")
+        print("{:02}, ".format(no), end="")

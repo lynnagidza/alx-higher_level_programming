@@ -4,7 +4,15 @@
 
 def pow(a, b):
     """Compute a to the power of b and return the value."""
+    if b == 0:
+        return 1
+    elif b < 0:
+        a = 1 / a
+        b = -b
     res = 1
-    for i in range(b):
-        res *= a
+    while b > 0:
+        if b % 2 == 1:
+            res *= a
+        a *= a
+        b //= 2
     return res
