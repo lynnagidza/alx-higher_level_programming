@@ -17,6 +17,6 @@ This repository contains JavaScript scripts that demonstrate various concepts an
 11. [10-factorial.js](10-factorial.js): This script computes and prints the factorial of an integer passed as a command-line argument. If no argument or a non-integer argument is provided, it prints "1". It uses a recursive function to calculate the factorial.
 12. [11-second_biggest.js](11-second_biggest.js): This script searches for the second biggest integer among the command-line arguments. If no argument or a single argument is provided, it prints "0". It demonstrates array manipulation and conditional statements.
 13. [12-object.js](12-object.js): This script updates the value of a property in an object. It replaces the value "12" with "89". It showcases object manipulation in JavaScript.
-14. [13-add.js](13-add.js): This script exports a function called "add" that performs the addition of two integers. It demonstrates the usage of modules and exporting functions in JavaScript.
+14. [13-add.js](13-add.js): This script exports a function called "add" that performs the addition of two integers. It demonstrates the usage of modules and exporting functions in JavaScript. Test file: [13-main.js](tests/13-main.js).
 
 For more details, refer to the individual script files.
