@@ -1,9 +1,9 @@
 #!/usr/bin/node
 
-const executeXTimes = require('../101-call_me_moby');
+const callMeMoby = require('../101-call_me_moby');
 
-function myFunction() {
+function myFunction () {
   console.log('JS is fun!');
 }
 
-executeXTimes(7, myFunction);
+callMeMoby(7, myFunction);

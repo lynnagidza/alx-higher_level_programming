@@ -1,8 +1,8 @@
 #!/usr/bin/node
 
-function incrementAndCall(number, theFunction) {
+function addMeMaybe (number, theFunction) {
   number++;
   theFunction(number);
 }
 
-module.exports = incrementAndCall;
+module.exports = addMeMaybe;

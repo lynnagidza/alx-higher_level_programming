@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-function findSecondBiggestInteger(args) {
+function findSecondBiggestInteger (args) {
   if (args.length <= 2) {
     return 0;
   }
