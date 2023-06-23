@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+"""Defines test cases for the text_indentation function."""
+
+
+import unittest
+from io import StringIO
+from unittest.mock import patch
+from text_indentation import text_indentation
+
+
+class TextIndentationTestCase(unittest.TestCase):
+    """Test cases for the text_indentation function."""
+
+    def test_text_indentation(self):
+        """Test text_indentation with a sample text."""
+        input_text = "Lorem ipsum dolor sit amet. Consectetur? Adipiscing elit: Sed vestibulum."
+        expected_output = "Lorem ipsum dolor sit amet\n\nConsectetur\n\nAdipiscing elit\n\nSed vestibulum."
+        with patch("sys.stdout", new=StringIO()) as fake_out:
+            text_indentation(input_text)
+            self.assertEqual(fake_out.getvalue().strip(), expected_output)
+
+    def test_text_indentation_empty_text(self):
+        """Test text_indentation with an empty text."""
+        expected_output = ""
+        with patch("sys.stdout", new=StringIO()) as fake_out:
+            text_indentation("")
+            self.assertEqual(fake_out.getvalue().strip(), expected_output)
+
+    def test_text_indentation_invalid_type(self):
+        """Test text_indentation with invalid type for text."""
+        with self.assertRaises(TypeError):
+            text_indentation(123)
+
+        with self.assertRaises(TypeError):
+            text_indentation(["Lorem", "ipsum"])
+
+        with self.assertRaises(TypeError):
+            text_indentation(None)
+
+
+if __name__ == "__main__":
+    unittest.main()

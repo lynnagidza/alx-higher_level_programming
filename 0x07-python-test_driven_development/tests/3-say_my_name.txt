@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+"""Defines test cases for the say_my_name function."""
+
+
+import unittest
+from io import StringIO
+from unittest.mock import patch
+from say_my_name import say_my_name
+
+
+class SayMyNameTestCase(unittest.TestCase):
+    """Test cases for the say_my_name function."""
+
+    def test_say_my_name(self):
+        """Test say_my_name with both first and last name."""
+        expected_output = "My name is John Doe"
+        with patch("sys.stdout", new=StringIO()) as fake_out:
+            say_my_name("John", "Doe")
+            self.assertEqual(fake_out.getvalue().strip(), expected_output)
+
+    def test_say_my_name_no_last_name(self):
+        """Test say_my_name with only first name."""
+        expected_output = "My name is Jane"
+        with patch("sys.stdout", new=StringIO()) as fake_out:
+            say_my_name("Jane")
+            self.assertEqual(fake_out.getvalue().strip(), expected_output)
+
+    def test_say_my_name_invalid_types(self):
+        """Test say_my_name with invalid types."""
+        with self.assertRaises(TypeError):
+            say_my_name(123, "Doe")
+
+        with self.assertRaises(TypeError):
+            say_my_name("John", 456)
+
+        with self.assertRaises(TypeError):
+            say_my_name(123, 456)
+
+
+if __name__ == "__main__":
+    unittest.main()

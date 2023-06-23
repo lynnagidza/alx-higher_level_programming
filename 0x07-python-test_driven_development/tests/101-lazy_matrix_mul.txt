@@ -1,0 +1,20 @@
+import unittest
+from solution import lazy_matrix_mul
+
+class LazyMatrixMulTestCase(unittest.TestCase):
+    def test_matrix_multiplication(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[5, 6], [7, 8]]
+        expected_result = [[19, 22], [43, 50]]
+        result = lazy_matrix_mul(m_a, m_b)
+        self.assertEqual(result, expected_result)
+
+    def test_invalid_matrix_multiplication(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[5, 6, 7], [8, 9, 10]]
+        with self.assertRaises(ValueError) as context:
+            lazy_matrix_mul(m_a, m_b)
+        self.assertEqual(str(context.exception), "m_a and m_b can't be multiplied")
+
+if __name__ == '__main__':
+    unittest.main()

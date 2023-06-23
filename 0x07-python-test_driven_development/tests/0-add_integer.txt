@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+"""Test cases for add_integer function."""
+
+import doctest
+import sys
+import os
+
+sys.path.append(os.path.abspath('..'))
+add_integer = __import__('add_integer').add_integer
+
+doctest.testmod()

@@ -1,0 +1,55 @@
+#!/usr/bin/python3
+"""Tests for the matrix_divided function."""
+
+import unittest
+from matrix import matrix_divided
+
+
+class MatrixDividedTestCase(unittest.TestCase):
+    """Test cases for the matrix_divided function."""
+
+    def test_matrix_divided(self):
+        """Test dividing all elements of a matrix."""
+        matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        div = 2
+        expected_result = [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0], [3.5, 4.0, 4.5]]
+        self.assertEqual(matrix_divided(matrix, div), expected_result)
+
+    def test_matrix_divided_empty_matrix(self):
+        """Test dividing all elements of an empty matrix."""
+        matrix = []
+        div = 2
+        expected_result = []
+        self.assertEqual(matrix_divided(matrix, div), expected_result)
+
+    def test_matrix_divided_zero_divisor(self):
+        """Test dividing all elements of a matrix with divisor 0."""
+        matrix = [[1, 2], [3, 4]]
+        div = 0
+        with self.assertRaises(ZeroDivisionError):
+            matrix_divided(matrix, div)
+
+    def test_matrix_divided_non_numeric_divisor(self):
+        """Test dividing all elements of a matrix with a non-numeric divisor."""
+        matrix = [[1, 2], [3, 4]]
+        div = '2'
+        with self.assertRaises(TypeError):
+            matrix_divided(matrix, div)
+
+    def test_matrix_divided_invalid_matrix(self):
+        """Test dividing all elements of an invalid matrix."""
+        matrix = [[1, 2], [3, '4']]
+        div = 2
+        with self.assertRaises(TypeError):
+            matrix_divided(matrix, div)
+
+    def test_matrix_divided_inconsistent_rows(self):
+        """Test dividing all elements of a matrix with inconsistent row sizes."""
+        matrix = [[1, 2, 3], [4, 5], [6, 7, 8]]
+        div = 2
+        with self.assertRaises(TypeError):
+            matrix_divided(matrix, div)
+
+
+if __name__ == '__main__':
+    unittest.main()
