@@ -43,8 +43,8 @@ def is_safe(board, row, col):
 
     for i in range(row):
         if board[i][col] == "Q" or \
-           board[i][col - (row - i)] == "Q" or \
-           board[i][col + (row - i)] == "Q":
+           (0 <= col - row + i < n and board[i][col - row + i] == "Q") or \
+           (0 <= col + row - i < n and board[i][col + row - i] == "Q"):
             return False
 
     return True
