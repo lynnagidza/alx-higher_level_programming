@@ -19,7 +19,7 @@ Usage:
 
 The program prints every possible solution to the N-queens problem, with one
 solution per line.
-The solutions are printed in a specific format.
+The solutions are printed in the format: [[row_1, col_1], [row_2, col_2], ...]
 
 You are only allowed to import the sys module.
 """
@@ -42,9 +42,9 @@ def is_safe(board, row, col):
     n = len(board)
 
     for i in range(row):
-        if board[i][col] == "Q" or \
-           (0 <= col - row + i < n and board[i][col - row + i] == "Q") or \
-           (0 <= col + row - i < n and board[i][col + row - i] == "Q"):
+        if board[i][col] == 1 or \
+           (0 <= col - row + i < n and board[i][col - row + i] == 1) or \
+           (0 <= col + row - i < n and board[i][col + row - i] == 1):
             return False
 
     return True
@@ -61,7 +61,7 @@ def solve_nqueens(n):
         list: List of all solutions to the N-queens problem.
     """
     solutions = []
-    board = [["." for _ in range(n)] for _ in range(n)]
+    board = [[0 for _ in range(n)] for _ in range(n)]
     backtrack(board, 0, solutions)
     return solutions
 
@@ -78,14 +78,16 @@ def backtrack(board, row, solutions):
     n = len(board)
 
     if row == n:
-        solutions.append([''.join(row) for row in board])
+        queens = [[i, j] for i in range(n)
+                  for j in range(n) if board[i][j] == 1]
+        solutions.append(queens)
         return
 
     for col in range(n):
         if is_safe(board, row, col):
-            board[row][col] = "Q"
+            board[row][col] = 1
             backtrack(board, row + 1, solutions)
-            board[row][col] = "."
+            board[row][col] = 0
 
 
 def print_solutions(solutions):
@@ -96,8 +98,7 @@ def print_solutions(solutions):
         solutions (list): List of solutions.
     """
     for solution in solutions:
-        print("\n".join(solution))
-        print()
+        print(solution)
 
 
 if __name__ == "__main__":
