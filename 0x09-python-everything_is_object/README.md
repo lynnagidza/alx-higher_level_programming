@@ -29,3 +29,7 @@ File: 101-locked_class.py
 Write a class `LockedClass` with no class or object attribute, that prevents the user from dynamically creating new instance attributes, except if the new instance attribute is called `first_name`.
 
 - You are not allowed to import any module.
+
+## Other Tasks
+
+Tasks 0-18, 20-28 and 31-34 are [here](Questions.txt).
